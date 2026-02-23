@@ -120,6 +120,10 @@
 </head>
 
 <body>
+   
+  <audio id="bgMusic" autoplay loop controls>
+    <source src="love.mp3" type="audio/mpeg">
+   </audio>
 
 <div class="overlay" id="popup">
     <div class="popup">
@@ -135,6 +139,12 @@
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const popupBox = document.querySelector(".popup");
+    const music = document.getElementById("bgMusic");
+
+    // Start music on first click (required by browsers)
+    document.addEventListener("click", () => {
+        music.play();
+    }, { once: true });
 
     function moveButton() {
         const rect = popupBox.getBoundingClientRect();
