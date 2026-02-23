@@ -51,16 +51,16 @@
         to { opacity: 1; }
     }
 
-    .popup {
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        text-align: center;
-        width: 90%;
-        max-width: 350px;
-        position: relative;
-        animation: popIn 0.6s ease;
-    }
+   .popup {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 320px;
+    position: relative;
+    animation: popIn 0.6s ease;
+}
 
     @keyframes popIn {
         0% { transform: scale(0.5); opacity: 0; }
@@ -73,10 +73,11 @@
         font-size: 24px;
     }
 
-    .buttons {
-        position: relative;
-        height: 60px;
-    }
+   .buttons {
+    position: relative;
+    height: 80px;
+    margin-top: 10px;
+}
 
     button {
         padding: 10px 20px;
@@ -91,7 +92,7 @@
     #yesBtn {
         background: #ff4d6d;
         color: white;
-        left: 20%;
+        left: 15%;
     }
 
     #yesBtn:hover {
@@ -99,11 +100,11 @@
         box-shadow: 0 0 15px #ff4d6d;
     }
 
-    #noBtn {
-        background: #aaa;
-        color: white;
-        right: 20%;
-    }
+  #noBtn {
+    background: #aaa;
+    color: white;
+    right: 15%;
+}
 
     .success {
         font-size: 22px;
@@ -116,6 +117,16 @@
         50% { transform: scale(1.1); }
         100% { transform: scale(1); }
     }
+   @media (max-width: 400px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
 </style>
 </head>
 
@@ -130,11 +141,11 @@
         <h2>I love you ❤️</h2>
         <div class="buttons">
             <button id="yesBtn">Yes 💖</button>
-            <button id="noBtn">No 😢</button>
+           <button id="noBtn">nv nokkalev bujjamma 😜</button>
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
@@ -161,10 +172,32 @@
     noBtn.addEventListener("mouseover", moveButton);
     noBtn.addEventListener("touchstart", moveButton);
 
-    yesBtn.addEventListener("click", () => {
-        popupBox.innerHTML = "<div class='success'>Yayyyy!! I knew it!! 💕🥰</div>";
+  yesBtn.addEventListener("click", () => {
+    popupBox.innerHTML = "<div class='success'>🥰 Naku telusu Bujjammmaaa💕🥰</div>";
+
+    // Confetti burst
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
     });
 
+    // Extra side burst
+    setTimeout(() => {
+        confetti({
+            particleCount: 100,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 100,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+    }, 300);
+});
     function createHeart() {
         const heart = document.createElement("div");
         heart.classList.add("heart");
